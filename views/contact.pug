@@ -1,0 +1,44 @@
+doctype html
+html
+include includes/head.pug
+//script(src='../public/scripts/validation')
+script.
+  function checkEmail(email) {
+  const re = /^(([^<>()\\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  if(!re.test(email.value))
+  {
+  alert("The email field has an invalid entry");
+  }
+  }
+  function submitFunction() {
+  var fnamevalidate = document.getElementById("fname");
+  var lnamevalidate = document.getElementById("lname");
+  var emailvalidate = document.getElementById("Email");
+  if (fnamevalidate.value == ""||lnamevalidate.value == ""||emailvalidate.value == false)
+  {
+  alert("A required field is missing");
+  }
+  else {
+  confirm("Are you sure you want to submit?");
+  }
+  }
+h1 Send me your personal information here
+.container-fluid
+  .col
+    form#contactForm(method='post' action ='/addcustomer')
+        label(for='fname') First Name:
+        input#fname(type='text' name='fname' required='required')
+        br
+        label(for='lname') Last Name:
+        input#lname(type='text' name='lname' required='required')
+        br 
+        label(for='email') Email:
+        input#email(type='email' name= 'email' required='required' onchange='checkEmail(this)')
+        br
+        label(for= 'inqtext') Inquiry:
+        br
+        textarea(name='inqtext' rows='10' cols='30')
+        br
+        input(type='submit' value='Submit' onclick='return submitFunction()')
+        br
+include includes/foot.pug

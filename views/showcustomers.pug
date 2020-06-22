@@ -1,0 +1,22 @@
+doctype html
+html
+include includes/head.pug
+head
+	title Main page
+body
+
+h1 Customer Inquiry List
+table
+each customer in customers
+	tr
+		td= customer.custId 
+		br
+		td= customer.fname
+		br
+		td= customer.lname
+		br
+		td= customer.email
+		br
+		td= customer.inqtext
+		br
+include includes/foot.pug
